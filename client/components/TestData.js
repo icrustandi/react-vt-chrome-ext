@@ -174,22 +174,18 @@ class TestData extends Component {
     // Modifier
     if (currentProperty !== '') {
       let value;
-      if (source === 'state') {
-        value = this.currentState[currentProperty];
-      } else {
-        console.log('props parse ', this.currentProps, currentProperty);
-        console.log('string to parse', this.currentProps[currentProperty])
-        value = this.currentProps[currentProperty];
-      }
-      console.log('in modifier', this.currentState, currentProperty);
+      if (source === 'state') value = this.currentState[currentProperty];
+      else value = this.currentProps[currentProperty];
+
       if (value.constructor === Array) {
         console.log('in modifier really array', value)
         this.modifierRender = (<Dropdown search searchInput={{ type: 'text' }} placeholder="Select Modifier" selection options={modifierOptions} id="modifierDropdown" onChange={(e, {value}) => this.handleModifierDropdown(e, value)} />);
       } else this.modifierRender = '';
     }
     // if modifier is index
+    // console.log('MODIFIER', this.props.stateIsNowProp.nodeStore.address, this.props.stateIsNowProp.test.loc[0].toString(), this.props.stateIsNowProp.nodeStore.address[this.props.stateIsNowProp.test.loc[0].toString()][this.props.stateIsNowProp.test.source][this.props.stateIsNowProp.test.property])
     if (this.props.stateIsNowProp.test.modifier === 'index') {
-      indexRender = (<Input placeholder="Enter a Number" className="indexInput" id="indexInput" type="number" />);
+      indexRender = (<Input placeholder="Enter a Number" className="indexInput" id="indexInput" min= '0' max={ } type="number" />);
     }
 
     return (
